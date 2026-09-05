@@ -1,0 +1,83 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  Zoe Financial legal and disclosure pages plus the primary regulator registries. Every
+  entry below is a regulatory or licensing status that Zoe publishes and that a third
+  party can verify in a public registry. There are NO technical/API conformance entries:
+  Zoe publishes no OpenAPI, AsyncAPI, GraphQL, MCP or other machine-readable contract, so
+  there is no artifact against which to assert OAuth2, OIDC, RFC 9457, FDX, pagination or
+  idempotency conformance. Absence here is a measurement, not an omission.
+domain_standard:
+  applicable: true
+  market: US retail wealth management / investment advice
+  declared: false
+  note: >-
+    The relevant domain standards for this market are FDX (financial data exchange) and
+    the SEC/FINRA reporting schemas. Zoe declares NO domain standard in any contract
+    because it publishes no contract. Reward-only check: recorded as not-declared rather
+    than as a failure.
+conformance:
+- id: sec-registered-investment-adviser
+  conforms: true
+  category: regulatory
+  detail: >-
+    Zoe Financial, Inc. is an investment adviser registered with the U.S. Securities and
+    Exchange Commission, CRD/IARD 285158. Form ADV Part 2A brochure and Form CRS are
+    published.
+  evidence: https://adviserinfo.sec.gov/firm/summary/285158
+  evidence_status: 200
+- id: sec-form-adv-part-2a-published
+  conforms: true
+  category: regulatory
+  detail: Firm brochure (Form ADV Part 2A) published via the SEC IAPD brochure endpoint.
+  evidence: https://adviserinfo.sec.gov/firm/brochure/285158
+  evidence_status: 200
+- id: sec-form-crs-published
+  conforms: true
+  category: regulatory
+  detail: >-
+    Customer Relationship Summary (Form CRS) published as a PDF through the SEC reports
+    endpoint, and mirrored on the company legal hub.
+  evidence: https://reports.adviserinfo.sec.gov/crs/crs_285158.pdf
+  evidence_status: 200
+- id: finra-member-broker-dealer
+  conforms: true
+  category: regulatory
+  detail: >-
+    Affiliate Zoe Securities LLC is a FINRA member broker-dealer, CRD 326979, and an SIPC
+    member. Brokerage services are provided by Zoe Securities LLC together with Apex
+    Clearing Corporation.
+  evidence: https://brokercheck.finra.org/firm/summary/326979
+  evidence_status: 200
+- id: business-continuity-plan-published
+  conforms: true
+  category: operational-disclosure
+  detail: Business continuity plan disclosure published on the company legal hub.
+  evidence: https://zoefinancial.com/legal/business-continuity-plan
+  evidence_status: 200
+- id: order-routing-and-payment-disclosure
+  conforms: true
+  category: regulatory
+  detail: >-
+    Order routing and payment-for-order-flow disclosure published, as required of a
+    broker-dealer.
+  evidence: https://zoefinancial.com/legal/order-routing-payment
+  evidence_status: 200
+- id: oauth2
+  conforms: false
+  category: technical
+  detail: >-
+    No published OAuth 2.0 surface. /.well-known/oauth-authorization-server and
+    /.well-known/openid-configuration return 404 on the registrable domain and on the
+    api.zoefin.com gateway host.
+  evidence: https://api.zoefin.com/.well-known/oauth-authorization-server
+  evidence_status: 404
+- id: rfc9457-problem-details
+  conforms: false
+  category: technical
+  detail: >-
+    Not assessable. The api.zoefin.com gateway returns bare {"message":"..."} JSON bodies
+    rather than application/problem+json, but there is no published contract and no
+    public operation to evaluate.
+  evidence: https://api.zoefin.com/api/
+  evidence_status: 404

@@ -1,0 +1,27 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Live probes of api.zoefin.com plus a full review of the 61 public pages in the
+  zoefinancial.com sitemap. No developer documentation of any kind exists to publish
+  limits in.
+limit_count: 0
+note: >-
+  No published rate limits. Zoe Financial operates no public API and no developer
+  documentation, so there is no limits reference to read. The one API host that exists,
+  api.zoefin.com, is a first-party gateway whose /api/v1/* route sits behind a blanket
+  authorizer: it returned HTTP 401 for every path tried including a deliberately
+  fabricated control path, so no unauthenticated response could be observed and no
+  rate-limit response headers could be captured. Recording an honest zero rather than
+  inferring limits that were never published.
+limits: []
+response_headers:
+  observed: []
+  note: >-
+    None observable. No unauthenticated, non-error response is reachable on any Zoe host,
+    so X-RateLimit-*, RateLimit-* and Retry-After could not be sampled.
+evidence:
+- url: https://api.zoefin.com/api/v1/
+  status: 401
+- url: https://api.zoefin.com/api/v1/zzz-nonexistent-control-9f3a
+  status: 401
+  note: control probe — proves the 401 is a blanket authorizer, not a withheld document

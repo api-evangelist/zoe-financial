@@ -64,5 +64,32 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Zoe Financial is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.nasdaqprivatemarket.com/
+Zoe Financial is a New York based wealth management technology company operating a two-sided
+platform: **Advisor Match**, a concierge and algorithmic service connecting individuals with
+vetted independent fiduciary financial advisors, and the **Zoe Wealth Platform**, an all-in-one
+TAMP for registered investment advisers covering digital account opening, funding and ACAT
+transfers, sub-advisory trade execution, household-level automated rebalancing, tax-loss
+harvesting, a model marketplace, high-yield cash accounts, private labeling and outsourced
+middle-office operations.
+
+Zoe Financial, Inc. is an SEC-registered investment adviser (CRD 285158). Its affiliate
+Zoe Securities LLC is a FINRA and SIPC member broker-dealer (CRD 326979), custodying on a
+multi-custodian model through Apex Clearing and Charles Schwab.
+
+## API surface
+
+**Zoe Financial publishes no public API.** A full contract-discovery pass on 2026-09-05 found no
+OpenAPI, Swagger, GraphQL, AsyncAPI, gRPC/Protobuf, WSDL, MCP server or A2A agent card on any
+host the company operates, and no developer portal, developer documentation, SDK or first-party
+package in any registry. All 61 pages in the public sitemap were reviewed; none is developer
+facing.
+
+One API host does exist — `api.zoefin.com`, a first-party gateway serving Zoe's own applications.
+Its `/api/v1/*` route sits behind a blanket authorizer that returns `401 Unauthorized` for every
+path, **including a deliberately fabricated control path**, so the 401 is an authenticator
+response and not evidence of a withheld document. It is not offered to third parties.
+
+Zoe is predominantly an API *consumer*: it integrates BridgeFT's WealthTech API for data
+connectivity, and ships integrations into Salesforce and eMoney.
+
+- https://zoefinancial.com/

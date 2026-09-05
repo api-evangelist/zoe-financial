@@ -1,0 +1,22 @@
+generated: '2026-09-05'
+method: searched
+source: https://zoefinancial.com/fee-schedule
+plan_count: 0
+note: >-
+  Zoe Financial publishes NO API plans, because it publishes no API. The company does
+  publish a detailed public fee schedule, but it prices brokerage and advisory services
+  to end clients and advisory firms, not programmatic access: commission-free equity,
+  ETF and mutual fund trades; fixed-income tickets at $.0005 x notional ($10 minimum) for
+  corporate bonds and $.001 x notional ($15 minimum) for Treasuries and other fixed
+  income; and per-event service fees such as $15 domestic outgoing wire, $75 ACAT
+  transfer, $25 margin sell-out and $10 trade correction. Advisory program fees are
+  disclosed in the Form ADV Part 2A brochure rather than on a pricing page. There is no
+  developer tier, no metered quota, no overage and no rate-limited plan to record.
+plans: []
+non_api_pricing:
+  published: true
+  kind: brokerage-and-service-fee-schedule
+  url: https://zoefinancial.com/fee-schedule
+  url_status: 200
+  advisory_fee_disclosure: https://adviserinfo.sec.gov/firm/brochure/285158
+  advisory_fee_disclosure_status: 200

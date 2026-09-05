@@ -1,0 +1,118 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Live anonymous GET of the named RFC well-known paths on every host this record knows —
+  the registrable domain and www, the redirect origin zoefin.com, the API gateway host
+  api.zoefin.com, the client and advisor app hosts, the Zendesk support host, and the
+  findanadvisor.com marketing property. No path returned a real document on any host, so
+  no WellKnown or SecurityTxt pointer is emitted in apis.yml.
+summary:
+  documents_served: 0
+  hosts_probed: 8
+  note: >-
+    Recorded absence, not an unfinished probe. my.zoefin.com answers HTTP 200 with a
+    ~20KB single-page-app HTML shell for every /.well-known/* path including paths that
+    cannot exist; those are catch-all responses, not documents, and are recorded as
+    misses. platform-support.zoefin.com is a Zendesk help centre fronted by Cloudflare
+    that returns 403 "error code: 1034" to non-browser clients, so its well-known space
+    could not be read.
+hosts:
+- host: zoefinancial.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: www.zoefinancial.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 308
+    note: redirects to the apex host, which 404s
+  - path: /.well-known/api-catalog
+    status: 308
+    note: redirects to the apex host, which 404s
+- host: zoefin.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+    note: >-
+      zoefin.com 301-redirects to https://zoefinancial.com/; direct well-known requests
+      to this host timed out at the edge.
+- host: api.zoefin.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: app.zoefin.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 307
+    note: authenticated advisor app; all unauthenticated paths 307 to a login redirect
+  - path: /.well-known/agent-card.json
+    status: 307
+  - path: /.well-known/openid-configuration
+    status: 307
+- host: my.zoefin.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: >-
+      NOT a document — 20,428 byte SPA HTML shell. The same shell is returned for
+      fabricated control paths, so every 200 on this host is a catch-all.
+  - path: /.well-known/agent-card.json
+    status: 200
+    note: NOT a document — SPA HTML shell (20,434 bytes), rejected as a false positive.
+  - path: /.well-known/agent.json
+    status: 200
+    note: NOT a document — SPA HTML shell (20,424 bytes), rejected as a false positive.
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: NOT a document — SPA HTML shell, rejected as a false positive.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    note: NOT a document — SPA HTML shell, rejected as a false positive.
+- host: findanadvisor.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: platform-support.zoefin.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    note: 'Cloudflare "error code: 1034" to non-browser clients; not readable by our crawler.'
+  - path: /.well-known/agent-card.json
+    status: 403
+    note: 'Cloudflare "error code: 1034"; not readable.'

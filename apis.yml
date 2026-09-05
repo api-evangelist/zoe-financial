@@ -1,17 +1,34 @@
 aid: zoe-financial
 name: Zoe Financial
-description: 'Zoe Financial is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Zoe Financial is a New York based wealth management technology company operating a two-sided
+  platform: Advisor Match, a concierge and algorithmic service connecting individuals with vetted
+  independent fiduciary financial advisors, and the Zoe Wealth Platform, an all-in-one TAMP for
+  registered investment advisers covering digital account opening, funding and ACAT transfers,
+  sub-advisory trade execution, household-level automated rebalancing, tax-loss harvesting, a model
+  marketplace, high-yield cash accounts, private labeling and outsourced middle-office operations.
+  Zoe Financial, Inc. is an SEC-registered investment adviser (CRD 285158) and affiliate Zoe
+  Securities LLC is a FINRA and SIPC member broker-dealer (CRD 326979), custodying through Apex
+  Clearing and Charles Schwab. Zoe consumes partner APIs (BridgeFT, Salesforce, eMoney) but
+  publishes no public API, SDK, developer portal or machine-readable contract of its own.
+image: https://framerusercontent.com/images/j8kosDjvH3CZOxN2ElANyw2FXLg.png
 url: https://raw.githubusercontent.com/api-evangelist/zoe-financial/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-09-05'
 modified: '2026-09-05'
+position: Consuming
 tags:
-- Company
+- Wealth Management
+- Financial Advisors
+- TAMP
+- Investment Management
+- Registered Investment Adviser
+- Brokerage
+- Financial Services
+- Portfolio Management
+- Fintech
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +36,55 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/zoe-financial-domain-security.yml
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://zoefinancial.com/
+- type: Blog
+  url: https://zoefinancial.com/articles
+- type: Support
+  url: https://zoefinancial.com/contact-us
+- type: Pricing
+  url: https://zoefinancial.com/fee-schedule
+- type: SignUp
+  url: https://my.zoefin.com/find-an-advisor
+- type: Login
+  url: https://app.zoefin.com/login
+- type: TermsOfService
+  url: https://zoefinancial.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://zoefinancial.com/privacy-policy
+- type: GitHubOrganization
+  url: https://github.com/zoefinancial
+- type: Conformance
+  url: conformance/zoe-financial-conformance.yml
+- type: Compliance
+  url: conformance/zoe-financial-conformance.yml
+- type: LLMsTxt
+  url: llms/zoe-financial-llms.txt
+x-enrichment:
+  date: '2026-09-05'
+  status: minimal
+  artifacts_added: 6
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Zoe Financial ships software only as an end-user product — a consumer advisor-match
+    site and an authenticated advisor platform — and runs no developer program at all:
+    none of the 61 pages in its public sitemap is developer facing, and its one API host
+    api.zoefin.com answers 401 from a blanket authorizer even for a fabricated control
+    path, so nothing about a contract can be read there.
+  evidence:
+  - url: https://api.zoefin.com/api/v1/openapi.json
+    status: 401
+  - url: https://api.zoefin.com/api/v1/zzz-nonexistent-control-9f3a
+    status: 401
+  - url: https://zoefinancial.com/openapi.json
+    status: 404
+  - url: https://zoefinancial.com/.well-known/agent-card.json
+    status: 404
+  - url: https://zoefinancial.com/sitemap.xml
+    status: 200
+  checked: '2026-09-05'
