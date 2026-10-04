@@ -26,8 +26,8 @@ tags:
 - Investment Management
 - Registered Investment Adviser
 - Brokerage
-- Financial-Services
-- Portfolio-Management
+- Financial Services
+- Portfolio Management
 - Fintech
 tags_raw:
 - Wealth Management
@@ -39,6 +39,8 @@ tags_raw:
 - Financial Services
 - Portfolio Management
 - Fintech
+- Financial-Services
+- Portfolio-Management
 apis: []
 maintainers:
 - FN: Kin Lane
